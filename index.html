@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dra. Raquel Baptista Pestana | Imunoalergologia</title>
+<meta name="description" content="Dra. Raquel Baptista Pestana — Imunoalergologia. Diagnóstico, tratamento e acompanhamento de doenças alérgicas e imunológicas.">
+
+<style>
+  /* ============================================================
+     TOKENS
+     ============================================================ */
+  :root{
+    --bg:#ffffff;
+    --surface:#f5fafc;
+    --surface-2:#eaf4fa;
+    --soft-blue:#dcecf6;
+    --accent:#2f6f8f;
+    --accent-deep:#204d63;
+    --accent-light:#7cadc6;
+    --ink:#22323a;
+    --muted:#63767e;
+    --line:#dfe9ee;
+    --shadow-sm: 0 2px 10px rgba(32,77,99,0.06);
+    --shadow-md: 0 12px 32px rgba(32,77,99,0.10);
+    --font-display: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Times New Roman', serif;
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --radius: 14px;
+    --container: 1140px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  img{ max-width:100%; display:block; }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .container{
+    max-width:var(--container);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  .eyebrow{
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:600;
+    display:inline-block;
+    margin-bottom:14px;
+  }
+
+  h1,h2,h3{
+    font-family:var(--font-display);
+    font-weight:400;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+
+  section{ position:relative; }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 32px;
+    border-radius:999px;
+    font-family:var(--font-body);
+    font-size:0.95rem;
+    font-weight:600;
+    letter-spacing:0.01em;
+    cursor:pointer;
+    border:none;
+    transition:transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s ease, background 0.35s ease;
+  }
+  .btn-primary{
+    background:var(--accent-deep);
+    color:#fff;
+    box-shadow:0 10px 26px rgba(32,77,99,0.24);
+  }
+  .btn-primary:hover{
+    background:var(--accent);
+    transform:translateY(-3px);
+    box-shadow:0 16px 34px rgba(32,77,99,0.30);
+  }
+  .btn-ghost{
+    background:#fff;
+    color:var(--accent-deep);
+    box-shadow:0 10px 26px rgba(32,77,99,0.10);
+  }
+  .btn-ghost:hover{
+    transform:translateY(-3px);
+    box-shadow:0 16px 30px rgba(32,77,99,0.16);
+  }
+
+  /* ============================================================
+     REVEAL ON SCROLL
+     ============================================================ */
+  .reveal{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity 0.8s ease, transform 0.8s cubic-bezier(.22,1,.36,1);
+  }
+  .reveal.is-visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .reveal-delay-1{ transition-delay:0.08s; }
+  .reveal-delay-2{ transition-delay:0.16s; }
+  .reveal-delay-3{ transition-delay:0.24s; }
+  .reveal-delay-4{ transition-delay:0.32s; }
+
+  @media (prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .btn, .card, .navbar{ transition:none !important; }
+  }
+
+  /* ============================================================
+     NAVBAR
+     ============================================================ */
+  .navbar{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(14px) saturate(160%);
+    -webkit-backdrop-filter:blur(14px) saturate(160%);
+    border-bottom:1px solid transparent;
+    transition:border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  }
+  .navbar.scrolled{
+    border-bottom-color:var(--line);
+    box-shadow:0 4px 24px rgba(32,77,99,0.05);
+  }
+  .navbar .container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:78px;
+  }
+  .brand{
+    display:flex;
+    flex-direction:column;
+    line-height:1.15;
+  }
+  .brand-name{
+    font-family:var(--font-display);
+    font-size:1.05rem;
+    color:var(--accent-deep);
+  }
+  .brand-role{
+    font-size:0.68rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:2px;
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:36px;
+  }
+  .nav-links a{
+    font-size:0.92rem;
+    color:var(--ink);
+    position:relative;
+    padding:6px 0;
+  }
+  .nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:0; height:1.5px;
+    background:var(--accent);
+    transition:width 0.3s ease;
+  }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-cta{
+    background:var(--accent-deep);
+    color:#fff !important;
+    padding:10px 22px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:0.85rem !important;
+    transition:background 0.3s ease, transform 0.3s ease;
+  }
+  .nav-cta:hover{ background:var(--accent); transform:translateY(-2px); }
+  .nav-cta::after{ display:none; }
+
+  .nav-toggle{ display:none; }
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  .hero{
+    padding:172px 0 96px;
+    background:
+      radial-gradient(760px 420px at 82% -6%, var(--soft-blue) 0%, rgba(220,236,246,0) 70%),
+      var(--bg);
+    overflow:hidden;
+  }
+  .hero .container{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero-name{
+    font-size:clamp(2.3rem, 4.4vw, 3.5rem);
+    line-height:1.12;
+    margin-bottom:18px;
+  }
+  .hero-specialty{
+    font-size:1.15rem;
+    color:var(--accent-deep);
+    font-weight:600;
+    margin-bottom:22px;
+    letter-spacing:0.01em;
+  }
+  .hero-tagline{
+    font-size:1.08rem;
+    color:var(--muted);
+    max-width:480px;
+    margin-bottom:36px;
+  }
+  .hero-actions{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+  .hero-note{
+    font-size:0.85rem;
+    color:var(--muted);
+  }
+
+  .hero-visual{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .photo-frame{
+    position:relative;
+    width:100%;
+    max-width:400px;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:var(--shadow-md);
+    border:1px solid var(--line);
+    background:var(--surface);
+  }
+  .photo-frame img{
+    width:100%;
+    height:auto;
+    display:block;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    object-position:top center;
+  }
+  .photo-badge{
+    position:absolute;
+    left:20px; bottom:20px;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(6px);
+    border-radius:12px;
+    padding:12px 16px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    box-shadow:0 8px 20px rgba(32,77,99,0.14);
+  }
+  .photo-badge svg{ width:26px; height:26px; flex:none; }
+  .photo-badge-text{ line-height:1.2; }
+  .photo-badge-name{ font-size:0.82rem; font-weight:700; color:var(--ink); }
+  .photo-badge-role{ font-size:0.7rem; color:var(--accent); text-transform:uppercase; letter-spacing:0.06em; }
+
+  .breath-card{
+    width:100%;
+    max-width:440px;
+    background:var(--surface);
+    border-radius:24px;
+    padding:40px 32px;
+    box-shadow:var(--shadow-md);
+    border:1px solid var(--line);
+    position:relative;
+  }
+  .breath-card svg{ width:100%; height:auto; display:block; }
+  .breath-caption{
+    margin-top:18px;
+    display:flex;
+    justify-content:space-between;
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:600;
+  }
+  .breath-path{
+    stroke-dasharray:1000;
+    stroke-dashoffset:1000;
+    animation:draw 2.6s cubic-bezier(.22,1,.36,1) 0.3s forwards;
+  }
+  @keyframes draw{
+    to{ stroke-dashoffset:0; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .breath-path{ animation:none; stroke-dashoffset:0; }
+  }
+
+  /* divider waveform used between sections */
+  .divider{
+    display:flex;
+    justify-content:center;
+    padding:6px 0;
+    opacity:0.55;
+  }
+  .divider svg{ width:180px; height:22px; }
+
+  /* ============================================================
+     SOBRE
+     ============================================================ */
+  .about{
+    padding:104px 0;
+    background:var(--bg);
+  }
+  .about .container{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:64px;
+    align-items:start;
+  }
+  .about h2{
+    font-size:clamp(1.9rem, 3vw, 2.5rem);
+    line-height:1.2;
+  }
+  .about-text p{
+    font-size:1.05rem;
+    color:var(--muted);
+    margin-bottom:18px;
+    max-width:560px;
+  }
+  .about-badges{
+    margin-top:28px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .badge{
+    font-size:0.82rem;
+    color:var(--accent-deep);
+    background:var(--surface-2);
+    border:1px solid var(--soft-blue);
+    padding:8px 16px;
+    border-radius:999px;
+    font-weight:600;
+  }
+
+  /* ============================================================
+     ÁREAS DE INTERESSE
+     ============================================================ */
+  .areas{
+    padding:104px 0;
+    background:var(--surface);
+  }
+  .areas-head{
+    max-width:640px;
+    margin-bottom:56px;
+  }
+  .areas-head h2{
+    font-size:clamp(1.9rem, 3vw, 2.5rem);
+    margin-bottom:14px;
+  }
+  .areas-head p{ color:var(--muted); font-size:1.02rem; }
+
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:22px;
+  }
+  .card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:30px 26px;
+    box-shadow:var(--shadow-sm);
+    transition:transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s ease, border-color 0.35s ease;
+  }
+  .card:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow-md);
+    border-color:var(--accent-light);
+  }
+  .card-icon{
+    width:46px; height:46px;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--surface-2);
+    border-radius:12px;
+    margin-bottom:18px;
+    color:var(--accent-deep);
+  }
+  .card-icon svg{ width:24px; height:24px; }
+  .card h3{
+    font-size:1.08rem;
+    font-family:var(--font-body);
+    font-weight:700;
+    margin-bottom:8px;
+    color:var(--ink);
+  }
+  .card p{
+    font-size:0.9rem;
+    color:var(--muted);
+  }
+
+  /* ============================================================
+     QUANDO MARCAR CONSULTA
+     ============================================================ */
+  .when{
+    padding:104px 0;
+    background:var(--bg);
+  }
+  .when .container{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:64px;
+    align-items:center;
+  }
+  .when h2{
+    font-size:clamp(1.9rem, 3vw, 2.5rem);
+    margin-bottom:16px;
+  }
+  .when-lead{ color:var(--muted); font-size:1.02rem; max-width:420px; }
+
+  .symptom-list{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .symptom-item{
+    display:flex;
+    align-items:flex-start;
+    gap:16px;
+    padding:20px 6px;
+    border-bottom:1px solid var(--line);
+  }
+  .symptom-item:last-child{ border-bottom:none; }
+  .symptom-icon{
+    flex:none;
+    width:34px; height:34px;
+    border-radius:50%;
+    background:var(--surface-2);
+    color:var(--accent-deep);
+    display:flex; align-items:center; justify-content:center;
+    margin-top:2px;
+  }
+  .symptom-icon svg{ width:17px; height:17px; }
+  .symptom-item p{
+    font-size:1rem;
+    color:var(--ink);
+  }
+
+  /* ============================================================
+     CTA FINAL
+     ============================================================ */
+  .cta-final{
+    padding:110px 0;
+    background:linear-gradient(160deg, var(--accent-deep) 0%, var(--accent) 100%);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-final::before{
+    content:"";
+    position:absolute;
+    width:640px; height:640px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,0.12);
+    top:-320px; left:50%;
+    transform:translateX(-50%);
+  }
+  .cta-final .container{ position:relative; z-index:1; }
+  .cta-final h2{
+    color:#fff;
+    font-size:clamp(1.8rem, 3.4vw, 2.6rem);
+    max-width:640px;
+    margin:0 auto 34px;
+    line-height:1.3;
+  }
+  .cta-final .btn-ghost{
+    background:#fff;
+  }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  footer{
+    background:var(--ink);
+    color:#c9d4d8;
+    padding:56px 0 34px;
+  }
+  .footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:24px;
+    padding-bottom:32px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .footer-brand-name{
+    font-family:var(--font-display);
+    font-size:1.2rem;
+    color:#fff;
+    margin-bottom:6px;
+  }
+  .footer-brand-role{
+    font-size:0.82rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--accent-light);
+  }
+  .footer-links{
+    display:flex;
+    gap:28px;
+    font-size:0.9rem;
+  }
+  .footer-links a:hover{ color:#fff; }
+  .footer-bottom{
+    padding-top:24px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    font-size:0.78rem;
+    color:#8a9a9f;
+  }
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width:960px){
+    .card-grid{ grid-template-columns:repeat(2, 1fr); }
+    .hero .container{ grid-template-columns:1fr; }
+    .hero-visual{ order:-1; max-width:420px; margin:0 auto 12px; }
+    .about .container, .when .container{ grid-template-columns:1fr; }
+    .when-lead{ max-width:none; }
+  }
+
+  @media (max-width:640px){
+    .container{ padding:0 20px; }
+    .nav-links{
+      position:fixed;
+      top:78px; left:0; right:0;
+      background:#fff;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:0;
+      border-bottom:1px solid var(--line);
+      box-shadow:var(--shadow-md);
+      transform:translateY(-140%);
+      opacity:0;
+      transition:transform 0.35s ease, opacity 0.3s ease;
+      pointer-events:none;
+    }
+    .nav-links.open{
+      transform:translateY(0);
+      opacity:1;
+      pointer-events:auto;
+    }
+    .nav-links a{ width:100%; padding:16px 20px; }
+    .nav-links a::after{ display:none; }
+    .nav-cta{ margin:10px 20px 16px; }
+    .nav-toggle{
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+      background:none;
+      border:none;
+      cursor:pointer;
+      padding:8px;
+    }
+    .nav-toggle span{
+      width:22px; height:2px;
+      background:var(--ink);
+      border-radius:2px;
+      transition:transform 0.3s ease, opacity 0.3s ease;
+    }
+    .nav-toggle.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2){ opacity:0; }
+    .nav-toggle.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+    .hero{ padding:132px 0 72px; }
+    .card-grid{ grid-template-columns:1fr; }
+    .hero-actions{ flex-direction:column; align-items:flex-start; }
+    .footer-top{ flex-direction:column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="brand">
+      <span class="brand-name">Dra. Raquel Baptista Pestana</span>
+      <span class="brand-role">Imunoalergologia</span>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#sobre">Sobre</a>
+      <a href="#areas">Áreas</a>
+      <a href="#consulta">Consulta</a>
+      <a class="nav-cta" href="https://www.lusiadas.pt/corpo-clinico/dra-raquel-baptista-pestana" target="_blank" rel="noopener">Marcar consulta</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-copy">
+      <span class="eyebrow reveal">Imunoalergologia</span>
+      <h1 class="hero-name reveal reveal-delay-1">Dra. Raquel<br>Baptista Pestana</h1>
+      <p class="hero-tagline reveal reveal-delay-2">Cuidados especializados em alergia, imunologia clínica e doenças respiratórias.</p>
+      <div class="hero-actions reveal reveal-delay-3">
+        <button class="btn btn-primary" onclick="window.open('https://www.lusiadas.pt/corpo-clinico/dra-raquel-baptista-pestana','_blank')">Marcar consulta</button>
+        <a href="#sobre" class="hero-note">Conhecer a abordagem clínica ↓</a>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal reveal-delay-2">
+      <div class="photo-frame">
+        <img src="assets/raquel-baptista-pestana.png" alt="Dra. Raquel Baptista Pestana, Imunoalergologista">
+        <div class="photo-badge">
+          <svg viewBox="0 0 400 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 100 C 40 100, 55 40, 90 40 C 115 40, 120 100, 150 100 C 175 100, 185 20, 215 20 C 245 20, 250 100, 280 100 C 305 100, 315 60, 345 60 C 365 60, 375 90, 400 90"
+                  stroke="#2f6f8f" stroke-width="10" stroke-linecap="round"/>
+          </svg>
+          <div class="photo-badge-text">
+            <div class="photo-badge-name">Raquel B. Pestana</div>
+            <div class="photo-badge-role">Imunoalergologia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 12 C 20 12, 25 4, 40 4 C 55 4, 60 20, 75 20 C 90 20, 95 8, 110 8 C 125 8, 130 16, 145 16 C 160 16, 165 10, 200 10" stroke="#2f6f8f" stroke-width="1.4" stroke-linecap="round"/>
+  </svg>
+</div>
+
+<!-- ============================================================
+     SOBRE
+     ============================================================ -->
+<section class="about" id="sobre">
+  <div class="container">
+    <div class="about-head reveal">
+      <span class="eyebrow">Sobre</span>
+      <h2>Uma abordagem centrada no doente.</h2>
+    </div>
+    <div class="about-text reveal reveal-delay-1">
+      <p>A Dra. Raquel Baptista Pestana dedica-se ao diagnóstico, tratamento e acompanhamento de doenças alérgicas e imunológicas, com uma abordagem médica personalizada, baseada na evidência científica e centrada no doente.</p>
+      <p>Cada consulta é orientada para uma compreensão clara da história clínica, permitindo um plano terapêutico adaptado a cada pessoa e às suas necessidades específicas.</p>
+      <div class="about-badges">
+        <span class="badge">Imunoalergologia</span>
+        <span class="badge">Medicina baseada na evidência</span>
+        <span class="badge">Acompanhamento personalizado</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ÁREAS DE INTERESSE
+     ============================================================ -->
+<section class="areas" id="areas">
+  <div class="container">
+    <div class="areas-head reveal">
+      <span class="eyebrow">Áreas de interesse</span>
+      <h2>Diagnóstico e tratamento especializado</h2>
+      <p>Um cuidado abrangente sobre as principais condições alérgicas e imunológicas.</p>
+    </div>
+
+    <div class="card-grid">
+      <!-- Rinite alérgica -->
+      <div class="card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 20c6 0 6-8 12-8s6 8 12 8"/>
+            <path d="M8 26c7 0 7-8 14-8s7 8 14 8"/>
+            <path d="M10 32c6 0 6-6 12-6s6 6 12 6"/>
+          </svg>
+        </div>
+        <h3>Rinite alérgica</h3>
+        <p>Diagnóstico e controlo dos sintomas nasais persistentes ou sazonais.</p>
+      </div>
+
+      <!-- Asma brônquica -->
+      <div class="card reveal reveal-delay-1">
+        <div class="card-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 8v14"/>
+            <path d="M24 22c-3-4-9-4-11 1-3 7 1 15 8 15 2 0 3-1 3-3v-13z"/>
+            <path d="M24 22c3-4 9-4 11 1 3 7-1 15-8 15-2 0-3-1-3-3v-13z"/>
+          </svg>
+        </div>
+        <h3>Asma brônquica</h3>
+        <p>Avaliação funcional respiratória e plano terapêutico individualizado.</p>
+      </div>
+
+      <!-- Alergias alimentares -->
+      <div class="card reveal reveal-delay-2">
+        <div class="card-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 12c-7 0-12 6-12 14 0 7 4 12 8 12 2 0 3-1 4-1s2 1 4 1c4 0 8-5 8-12 0-5-2-9-5-11"/>
+            <path d="M24 12c0-3 2-5 5-6"/>
+          </svg>
+        </div>
+        <h3>Alergias alimentares</h3>
+        <p>Identificação de alergénios e orientação para uma dieta segura.</p>
+      </div>
+
+      <!-- Urticária e angioedema -->
+      <div class="card reveal reveal-delay-3">
+        <div class="card-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 30c8 6 20 6 28 0"/>
+            <circle cx="16" cy="20" r="3.4"/>
+            <circle cx="26" cy="16" r="3.4"/>
+            <circle cx="34" cy="22" r="3.4"/>
+          </svg>
+        </div>
+        <h3>Urticária e angioedema</h3>
+        <p>Investigação etiológica e tratamento de reações cutâneas súbitas.</p>
+      </div>
+
+      <!-- Dermatite atópica -->
+      <div class="card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 8c6 8 11 15 11 21a11 11 0 0 1-22 0c0-6 5-13 11-21z"/>
+          </svg>
+        </div>
+        <h3>Dermatite atópica</h3>
+        <p>Acompanhamento contínuo da pele sensível e reativa.</p>
+      </div>
+
+      <!-- Alergia medicamentosa -->
+      <div class="card reveal reveal-delay-1">
+        <div class="card-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="10" y="18" width="28" height="12" rx="6" transform="rotate(-30 24 24)"/>
+            <line x1="20" y1="15" x2="28" y2="33" transform="rotate(-30 24 24)"/>
+          </svg>
+        </div>
+        <h3>Alergia medicamentosa</h3>
+        <p>Avaliação de reações a fármacos e alternativas terapêuticas seguras.</p>
+      </div>
+
+      <!-- Imunoterapia alergénica -->
+      <div class="card reveal reveal-delay-2">
+        <div class="card-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M30 10l8 8-4 4-8-8z"/>
+            <path d="M30 18L14 34l-4 4 4 4 4-4 16-16"/>
+            <line x1="24" y1="16" x2="28" y2="20"/>
+            <line x1="20" y1="20" x2="24" y2="24"/>
+          </svg>
+        </div>
+        <h3>Imunoterapia alergénica</h3>
+        <p>Tratamento dessensibilizante para uma resposta imunológica duradoura.</p>
+      </div>
+
+      <!-- Alergias respiratórias -->
+      <div class="card reveal reveal-delay-3">
+        <div class="card-icon">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 20a5 5 0 0 1 5-5c2 0 3 1 4 2"/>
+            <path d="M8 26h26a5 5 0 0 0 0-10c-2 0-3.5 1-4.5 2.5"/>
+            <path d="M8 32h20a4 4 0 0 1 0 8"/>
+          </svg>
+        </div>
+        <h3>Alergias respiratórias</h3>
+        <p>Estudo de alergénios inaláveis e do seu impacto na via aérea.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 12 C 20 12, 25 4, 40 4 C 55 4, 60 20, 75 20 C 90 20, 95 8, 110 8 C 125 8, 130 16, 145 16 C 160 16, 165 10, 200 10" stroke="#2f6f8f" stroke-width="1.4" stroke-linecap="round"/>
+  </svg>
+</div>
+
+<!-- ============================================================
+     QUANDO MARCAR CONSULTA
+     ============================================================ -->
+<section class="when" id="quando">
+  <div class="container">
+    <div class="when-head reveal">
+      <span class="eyebrow">Quando marcar consulta</span>
+      <h2>Sinais a não ignorar</h2>
+      <p class="when-lead">Alguns sintomas frequentes que justificam uma avaliação em Imunoalergologia.</p>
+    </div>
+
+    <div class="symptom-list reveal reveal-delay-1">
+      <div class="symptom-item">
+        <span class="symptom-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16M4 12l4-4M4 12l4 4"/></svg>
+        </span>
+        <p>Espirros, nariz entupido ou comichão persistente</p>
+      </div>
+      <div class="symptom-item">
+        <span class="symptom-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16M4 12l4-4M4 12l4 4"/></svg>
+        </span>
+        <p>Tosse, pieira ou falta de ar recorrente</p>
+      </div>
+      <div class="symptom-item">
+        <span class="symptom-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16M4 12l4-4M4 12l4 4"/></svg>
+        </span>
+        <p>Reações após alimentos ou medicamentos</p>
+      </div>
+      <div class="symptom-item">
+        <span class="symptom-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16M4 12l4-4M4 12l4 4"/></svg>
+        </span>
+        <p>Urticária, eczema ou inchaço súbito</p>
+      </div>
+      <div class="symptom-item">
+        <span class="symptom-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16M4 12l4-4M4 12l4 4"/></svg>
+        </span>
+        <p>Suspeita de alergias sazonais ou respiratórias</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA FINAL
+     ============================================================ -->
+<section class="cta-final" id="consulta">
+  <div class="container reveal">
+    <h2>Agende uma consulta de Imunoalergologia com a Dra. Raquel Baptista Pestana.</h2>
+    <button class="btn btn-ghost" onclick="window.open('https://www.lusiadas.pt/corpo-clinico/dra-raquel-baptista-pestana','_blank')">Marcar consulta</button>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">Dra. Raquel Baptista Pestana</div>
+        <div class="footer-brand-role">Imunoalergologia</div>
+      </div>
+      <div class="footer-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#areas">Áreas</a>
+        <a href="#consulta">Consulta</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Dra. Raquel Baptista Pestana</span>
+      <span>Informação meramente institucional.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Ano automático no footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Navbar: sombra ao fazer scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 12);
+  });
+
+  // Menu mobile
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navToggle.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  // Reveal on scroll (IntersectionObserver)
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
